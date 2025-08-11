@@ -7,13 +7,14 @@ end
 vim.g.loaded_matchit = 1 -- disable early
 require('impatient')
 require('impatient').enable_profile()
+require("pwnvim.lazy")
 require('pwnvim.filetypes').config()
 require('pwnvim.options').defaults()
-if vim.g.neovide then
-  require('pwnvim.options').colors_onedark()
-else
-  require('pwnvim.options').colors_cat()
-end
+--if vim.g.neovide then
+--  require('pwnvim.options').colors_onedark()
+--else
+--  require('pwnvim.options').colors_cat()
+--end
 require('pwnvim.options').gui()
 require('pwnvim.mappings').config()
 require('pwnvim.abbreviations')
