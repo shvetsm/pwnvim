@@ -308,6 +308,25 @@ M.colors_cat = function()
   vim.cmd.colorscheme(cscheme)
 end
 
+M.colors_fluoromachine = function()
+  vim.g.termguicolors = not SimpleUI
+  vim.o.termguicolors = not SimpleUI
+  vim.o.background = "dark"
+
+  local ok, fm = pcall(require, 'fluoromachine')
+  if not ok then
+    -- Fallback to existing themes if fluoromachine isn't available on rtp
+    return M.colors_cat()
+  end
+
+  fm.setup({
+    glow = true,
+    theme = 'fluoromachine', -- alternatives: 'retrowave', 'delta'
+    transparent = true,
+  })
+  vim.cmd.colorscheme('fluoromachine')
+end
+
 M.colors_onedark = function()
   vim.g.termguicolors = not SimpleUI
   vim.o.termguicolors = not SimpleUI
